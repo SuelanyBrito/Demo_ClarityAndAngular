@@ -1,0 +1,64 @@
+<div class="main-container">
+    <header class="header header-5">
+        <div class="branding">
+            <a href="/home" class="nav-link">
+                <clr-icon shape="vm"></clr-icon>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+
+        <div class="header-actions">
+            <a href="javascript://" class="nav-link nav-icon-text">
+                <clr-icon shape="user"></clr-icon>
+                <span class="nav-text">username</span>
+            </a>
+        </div>
+    </header>
+
+    <nav class="subnav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard" aria-current="page">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/calendar">Calendar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cloud</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tenants</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <form clrForm>
+
+        <clr-date-container>
+            <label>Enabled Date Picker</label>
+            <input type="date" [(clrDate)]="date" />
+        </clr-date-container>
+
+        <br />
+
+        <clr-date-container>
+            <label>Disabled Date Picker</label>
+            <input type="date" clrDate disabled />
+        </clr-date-container>
+
+        <br />
+
+        <clr-date-container>
+            <label>Toggled Date Picker</label>
+            <input type="date" [(clrDate)]="date" [disabled]="disabled" />
+        </clr-date-container>
+
+        <br />
+
+        <button type="button" (click)="disabled = !disabled">
+            Toggle Disabled State
+        </button>
+
+    </form>
+</div>
