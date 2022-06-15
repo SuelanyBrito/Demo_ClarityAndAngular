@@ -1,0 +1,218 @@
+<div class="main-container">
+  <header class="header header-5">
+    <div class="branding">
+      <a href="/home" class="nav-link">
+        <clr-icon shape="vm"></clr-icon>
+        <span class="title">Project Clarity</span>
+      </a>
+    </div>
+
+    <div class="header-actions">
+      <a href="javascript://" class="nav-link nav-icon-text">
+        <clr-icon shape="user"></clr-icon>
+        <span class="nav-text">username</span>
+      </a>
+    </div>
+  </header>
+
+  <nav class="subnav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard" aria-current="page">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Management</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cloud</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tenants</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-container">
+    <div class="content-area">
+      <h3>Alerts</h3>
+      <clr-alert status="success"
+        >This is an alert with a status of "success"</clr-alert
+      >
+
+      <div class="alert alert-danger">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <clr-icon
+                class="alert-icon"
+                shape="exclamation-circle"
+              ></clr-icon>
+            </div>
+            <span class="alert-text">
+              This alert is at the top of the page.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Icons</h3>
+      <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+      <clr-icon shape="home"></clr-icon>
+      <clr-icon shape="bell"></clr-icon>
+      <clr-icon shape="bell" class="has-badge"></clr-icon>
+      <clr-icon shape="view-list"></clr-icon>
+
+      <h3>Checkbox</h3>
+      <input type="checkbox" />
+
+      <input type="checkbox" clrToggle />
+
+      <clr-toggle-wrapper>
+        <input
+          type="checkbox"
+          clrToggle
+          value="option1"
+          name="options"
+          checked="true"
+        />
+        <label>Option 1</label>
+      </clr-toggle-wrapper>
+
+      <h3>Modal</h3>
+      <clr-toggle-container>
+        <clr-toggle-wrapper>
+          <input
+            type="checkbox"
+            clrToggle
+            value="option1"
+            name="options"
+            [checked]="modal"
+            (change)="modal = !modal"
+          />
+          <label>Modal</label>
+        </clr-toggle-wrapper>
+      </clr-toggle-container>
+
+      <div *ngIf="modal" class="modal static bump-down">
+        <div class="modal-dialog" role="dialog" aria-hidden="true">
+          <div class="modal-content">
+            <div class="alert alert-success alert-sm" role="alert">
+              <div class="alert-items">
+                <div class="alert-item static">
+                  <div class="alert-icon-wrapper">
+                    <clr-icon
+                      class="alert-icon"
+                      shape="exclamation-circle"
+                    ></clr-icon>
+                  </div>
+                  <span class="alert-text"> Alert in a modal. </span>
+                </div>
+              </div>
+            </div>
+            <div class="modal-header">
+              <button
+                aria-label="Close"
+                class="close"
+                type="button"
+                (click)="modal = false"
+              >
+                <clr-icon aria-hidden="true" shape="close"></clr-icon>
+              </button>
+              <h3 class="modal-title">I have a nice title</h3>
+            </div>
+            <div class="modal-body">
+              <p>But not much to say...</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-outline"
+                type="button"
+                (click)="modal = false"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-primary"
+                type="button"
+                (click)="modal = false"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Tree view</h3>
+      <clr-tree>
+        <clr-tree-node
+          *ngFor="let directory of rootDirectory"
+          [(clrExpanded)]="directory.expanded"
+        >
+          <clr-icon [attr.shape]="directory.icon"></clr-icon>
+          {{ directory.name }}
+          <clr-tree-node *ngFor="let file of directory.files">
+            <button
+              (click)="openFile(directory.name, file.name)"
+              class="clr-treenode-link"
+              [class.active]="file.active"
+            >
+              <clr-icon [attr.shape]="file.icon"></clr-icon>
+              {{ file.name }}
+            </button>
+          </clr-tree-node>
+        </clr-tree-node>
+      </clr-tree>
+
+      <h3>Table</h3>
+      <table class="table table-compact">
+        <thead>
+          <tr>
+            <th class="left">Monster</th>
+            <th>Home</th>
+            <th>Likes Cookies</th>
+            <th class="right">Fun to Play With</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left">Wolfman</td>
+            <td>Nondisclosed countryside</td>
+            <td>Sometimes</td>
+            <td class="right">Not really</td>
+          </tr>
+          <tr>
+            <td class="left">Mothra</td>
+            <td>Tropical island</td>
+            <td>No</td>
+            <td class="right">Only if you have a flashlight</td>
+          </tr>
+          <tr>
+            <td class="left">Oscar the Grouch</td>
+            <td>Sesame Street</td>
+            <td>No</td>
+            <td class="right">No</td>
+          </tr>
+          <tr>
+            <td class="left">Cookie Monster</td>
+            <td>Sesame Street</td>
+            <td>Definitely yes</td>
+            <td class="right">Only if you have no cookies</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!--
+        import '@cds/core/toggle/register.js'; //ONDE?
+
+
+        <cds-toggle>
+          <label>toggle</label>
+          <input type="checkbox" checked />
+          <cds-control-message>message text</cds-control-message>
+        </cds-toggle>
+
+         <cds-alert status="success">This is an alert with a status of "success"</cds-alert>
+      -->
+    </div>
+  </div>
+</div>
